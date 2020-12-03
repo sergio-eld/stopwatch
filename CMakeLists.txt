@@ -12,11 +12,6 @@ target_include_directories(stopwatch
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
-#set_target_properties(stopwatch PROPERTIES
-#        CXX_STANDARD 11
-#        CXX_STANDARD_REQUIRED TRUE
-#        )
-
 # tests
 add_executable(test.dummy tests/dummy.cpp)
 target_link_libraries(test.dummy PRIVATE stopwatch)
