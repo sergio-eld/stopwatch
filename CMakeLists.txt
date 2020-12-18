@@ -12,9 +12,11 @@ target_include_directories(stopwatch
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
+add_library(eld::stopwatch ALIAS stopwatch)
+
 # tests
 add_executable(test.dummy tests/dummy.cpp)
-target_link_libraries(test.dummy PRIVATE stopwatch)
+target_link_libraries(test.dummy PRIVATE eld::stopwatch)
 
 # installation
 include(CMakePackageConfigHelpers)
