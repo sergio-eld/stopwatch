@@ -4,7 +4,7 @@ namespace eld
 {
     template <typename ClockType,
             typename DurationCaster>
-    class stopwatch
+    class stopwatch_base
     {
     public:
 
@@ -12,7 +12,7 @@ namespace eld
         using duration = typename clock_type::duration;
         using time_point = typename clock_type::time_point;
 
-        stopwatch()
+        stopwatch_base()
              : start_(clock_type::now())
         {}
 

@@ -1,5 +1,6 @@
 ﻿
-#include <stopwatch/stopwatch.h>
+#include <stopwatch/stopwatch_base.h>
+#include <stopwatch/stopwatch_std.h>
 
 #include <iostream>
 #include <chrono>
@@ -18,7 +19,7 @@ struct DurationCaster
 int main()
 {
 
-    eld::stopwatch<std::chrono::steady_clock, DurationCaster> steadyWatch{};
+    eld::stopwatch_base<std::chrono::steady_clock, DurationCaster> steadyWatch{};
 
     std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
@@ -28,11 +29,10 @@ int main()
     std::chrono::milliseconds milliseconds = steadyWatch;
     std::cout << milliseconds.count() << std::endl;
 
-    // This is ugly and does not work
-//    milliseconds = steadyWatch([](typename decltype(steadyWatch)::duration from)
-//            {
-//        return std::chrono::duration_cast<std::chrono::milliseconds>(from);
-//            });
+    eld::steady_stopwatch steadyStopwatch{};
+
+    std::chrono::milliseconds msec_steady = steadyStopwatch;
+    std::cout << msec_steady.count() << std::endl;
 
     return 0;
 }
